@@ -1,4 +1,3 @@
-using CarRentalManagement.Server.Data;
 using CarRentalManagement.Server.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -6,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using CarRentalManagement.Server.IRepository;
 using CarRentalManagement.Server.Repository;
-
+using CarRentalManagement.Server.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
