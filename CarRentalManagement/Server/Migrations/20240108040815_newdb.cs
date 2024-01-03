@@ -60,7 +60,7 @@ namespace CarRentalManagement.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -77,12 +77,12 @@ namespace CarRentalManagement.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DrivingLicense = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DrivingLicense = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -136,7 +136,7 @@ namespace CarRentalManagement.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -153,7 +153,7 @@ namespace CarRentalManagement.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -297,7 +297,7 @@ namespace CarRentalManagement.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Year = table.Column<int>(type: "int", nullable: false),
-                    LicensePlateNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LicensePlateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MakeID = table.Column<int>(type: "int", nullable: false),
                     ModelID = table.Column<int>(type: "int", nullable: false),
                     ColourID = table.Column<int>(type: "int", nullable: false),
@@ -336,7 +336,7 @@ namespace CarRentalManagement.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateOut = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateOut = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateIn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     VehicleId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
@@ -374,15 +374,15 @@ namespace CarRentalManagement.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "f51b2acb-4a33-4955-a841-ba9a36b412f2", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", " ADMIN@LOCALHOST.COM ", "AQAAAAIAAYagAAAAEBvQtad7wAiumgd4ckOcrrOPb/IL+a9L0FScTBp0LwSXyOzzx+hnBK//teE2S1180Q==", null, false, "395261f4-b63d-4a96-84df-7dac1e423313", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "906d8e2d-8a5a-4463-aaae-a1837a255fe6", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", " ADMIN@LOCALHOST.COM ", "AQAAAAIAAYagAAAAEAR2NByF9R3tbbdPh4XAkNS6MShYwDWo/T0jqSSFIr6z+e06YRI8Fi6SXTZhdKwUeg==", null, false, "6cf9d77f-85f9-48ef-b070-7c4e9e4e9c46", false, "admin@localhost.com" });
 
             migrationBuilder.InsertData(
                 table: "Colors",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9268), new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9286), "Black", "System" },
-                    { 2, "System", new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9287), new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9288), "Blue", "System" }
+                    { 1, "System", new DateTime(2024, 1, 8, 12, 8, 15, 414, DateTimeKind.Local).AddTicks(1457), new DateTime(2024, 1, 8, 12, 8, 15, 414, DateTimeKind.Local).AddTicks(1473), "Black", "System" },
+                    { 2, "System", new DateTime(2024, 1, 8, 12, 8, 15, 414, DateTimeKind.Local).AddTicks(1476), new DateTime(2024, 1, 8, 12, 8, 15, 414, DateTimeKind.Local).AddTicks(1477), "Blue", "System" }
                 });
 
             migrationBuilder.InsertData(

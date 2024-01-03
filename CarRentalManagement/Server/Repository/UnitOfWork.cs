@@ -11,7 +11,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-
 namespace CarRentalManagement.Server.Repository
 {
     public class UnitOfWork : IUnitOfWork

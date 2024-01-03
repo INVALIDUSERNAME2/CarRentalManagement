@@ -2,25 +2,35 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@implements IDisposable
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+
 <h3 class="card-title">Car Bookings</h3>
 
+<a href="/bookings/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Bookings
+</a>
+<br />
+<br />
 @if (Bookings == null)
 {
     <div class="alert alert-info">Loading Bookings....</div>
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="bookingsTable">
         <thead>
             <tr>
-
                 <th>Booking Id</th>
                 <th>Customer License</th>
                 <th>Date</th>
                 <th>Duration in days</th>
                 <th>Plate Number</th>
                 <th>Actions</th>
-             </tr>
+            </tr>
         </thead>
         <tbody>
             @foreach (var booking in Bookings)
@@ -29,37 +39,28 @@ else
                     <td>@booking.Id</td>
                     <td>@booking.Customer.DrivingLicense</td>
                     <td>@booking.DateCreated.Date.ToString("dd MMMM yyyy")</td>
-                    <td>@((booking.DateIn - booking.DateOut)?.TotalDays.ToString())</td>
-                    <td>@booking.Vehicle.LicensePlateNumber</td
-
+                    <td>@(booking.DateIn != null ? (booking.DateIn.Value - booking.DateOut)?.TotalDays.ToString() : "To Be Determined")</td>
+                    <td>@booking.Vehicle.LicensePlateNumber</td>
                     <td>
                         <a href="/Bookings/view/@booking.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-
                         <a href="/Bookings/edit/@booking.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
-
                         <button class="btn btn-danger" @onclick="@(()=>Delete(booking.Id))">
                             <span class="oi oi-delete"></span>
                         </button>
-
                     </td>
                 </tr>
-
             }
-
-
         </tbody>
-
-
-
     </table>
 }
 <br />
 @code {
     private List<Booking>? Bookings;
+    private DateTime nullDT = new DateTime(1, 1, 1, 0, 0, 0);
 
     protected async override Task OnInitializedAsync()
     {
@@ -79,4 +80,30 @@ else
             }
         }
     }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#bookingsTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#bookingsTable");
+    }
 }
+
+<script>
+    function AddDataTable(table) {
+        $(document).ready(function () {
+            $(table).DataTable();
+        });
+    }
+
+    function DataTablesDispose(table) {
+        $(document).ready(function () {
+            $(table).DataTable().destroy();
+            var element = document.querySelector(table + '_wrapper');
+            element.parentNode.removeChild(element);
+        });
+    }
+</script>

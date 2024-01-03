@@ -1,4 +1,5 @@
-﻿using CarRentalManagement.Server.IRepository;
+﻿using CarRentalManagement.Server.Data;
+using CarRentalManagement.Server.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using CarRentalManagement.Server.Data;
+
 namespace CarRentalManagement.Server.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
