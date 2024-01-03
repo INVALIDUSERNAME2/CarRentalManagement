@@ -374,15 +374,15 @@ namespace CarRentalManagement.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "f51b2acb-4a33-4955-a841-ba9a36b412f2", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", " ADMIN@LOCALHOST.COM ", "AQAAAAIAAYagAAAAEBvQtad7wAiumgd4ckOcrrOPb/IL+a9L0FScTBp0LwSXyOzzx+hnBK//teE2S1180Q==", null, false, "395261f4-b63d-4a96-84df-7dac1e423313", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "500069be-ab2d-45c3-8dcf-917f6c7b8762", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", " ADMIN@LOCALHOST.COM ", "AQAAAAIAAYagAAAAEODSycIUO21OsE7leKPnta8nTVKutjx+snaenmtuekJEP1rBS7R2vqVCiPCNLcsy8w==", null, false, "37e99863-32a3-430b-bede-8cd930f29593", false, "admin@localhost.com" });
 
             migrationBuilder.InsertData(
                 table: "Colors",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9268), new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9286), "Black", "System" },
-                    { 2, "System", new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9287), new DateTime(2024, 1, 3, 11, 35, 52, 589, DateTimeKind.Local).AddTicks(9288), "Blue", "System" }
+                    { 1, "System", new DateTime(2024, 1, 3, 12, 29, 48, 209, DateTimeKind.Local).AddTicks(1217), new DateTime(2024, 1, 3, 12, 29, 48, 209, DateTimeKind.Local).AddTicks(1231), "Black", "System" },
+                    { 2, "System", new DateTime(2024, 1, 3, 12, 29, 48, 209, DateTimeKind.Local).AddTicks(1233), new DateTime(2024, 1, 3, 12, 29, 48, 209, DateTimeKind.Local).AddTicks(1233), "Blue", "System" }
                 });
 
             migrationBuilder.InsertData(
