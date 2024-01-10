@@ -2,29 +2,77 @@
 @inject HttpClient _client
 @inject NavigationManager _navManager
 
-<h3 class="card-title">Create New Booking</h3>
+<h3 class="card-title">Create New customer</h3>
 <hr />
 <br />
 
-<FormComponent ButtonText="Create Booking" booking="booking" OnValidSubmit="@CreateBooking" />
+<EditForm Model="@customer" OnValidSubmit="Createcustomer">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>First Name: </label>
+        <div>
+            <InputText @bind-Value="@customer.FirstName" class="form-control" />
+            <ValidationMessage For="@(() => customer.FirstName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Last Name: </label>
+        <div>
+            <InputText @bind-Value="@customer.LastName" class="form-control" />
+            <ValidationMessage For="@(() => customer.LastName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Driving License: </label>
+        <div>
+            <InputText @bind-Value="@customer.DrivingLicense" class="form-control" />
+            <ValidationMessage For="@(() => customer.DrivingLicense)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address: </label>
+        <div>
+            <InputText @bind-Value="@customer.Address" class="form-control" />
+            <ValidationMessage For="@(() => customer.Address)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Contact Number </label>
+        <div>
+            <InputText @bind-Value="@customer.ContactNumber" class="form-control" />
+            <ValidationMessage For="@(() => customer.ContactNumber)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email Address: </label>
+        <div>
+            <InputText @bind-Value="@customer.EmailAddress" class="form-control" />
+            <ValidationMessage For="@(() => customer.EmailAddress)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create customer
+    </button>
+
+</EditForm>
 
 
 @code {
-    Booking booking = new Booking();
+    Customer customer = new Customer();
 
-    private IList<Vehicle>? Vehicles;
-    private IList<Customer>? Customers;
-
-    protected async override Task OnInitializedAsync()
+    private async Task Createcustomer()
     {
-        Vehicles = await _client.GetFromJsonAsync<List<Vehicle>>($"{Endpoints.VehiclesEndpoint}");
-        Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
-    }
-
-    private async Task CreateBooking()
-    {
-        await _client.PostAsJsonAsync(Endpoints.BookingsEndpoint, booking);
-        _navManager.NavigateTo("/bookings/");
+        await _client.PostAsJsonAsync(Endpoints.CustomersEndpoint, customer);
+        _navManager.NavigateTo("/customers/");
     }
 
 }
